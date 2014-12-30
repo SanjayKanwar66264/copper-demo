@@ -34,17 +34,24 @@ angular.module('copperAminsuranceApp')
             if ($scope.thing === '') {
                 return;
             }
-            $http.post('/api/things', { name: $scope.name });
-            $scope.newThing = '';
+            $http.post('api/things/update/' + thing._id, thing).success(function () {
+                return;
+            });
+
         };
 
-        $scope.updateInfo = function (thing) {
+  /*      $scope.updateInfo = function (thing) {
             if ($scope.thing === '') {
                 return;
             }
-            $http.post('api/things/update/'+thing._id,thing).success(function (products) {
-                return console.log("working" + products);
+            $http.post('api/things/update/' + thing._id, thing).success(function () {
+               return;
             });
-            $scope.newThing = '';
         };
+
+        function getAllThing() {
+            $http.get('/api/things').success(function (awesomeThings) {
+                $scope.awesomeThings = awesomeThings;
+            });
+        }*/
     });

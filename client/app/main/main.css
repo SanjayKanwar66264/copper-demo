@@ -24,12 +24,54 @@
 
 .footer {
     text-align: center;
-    padding: 30px 0;
-    margin-top: 70px;
+    padding: 10px 0;
+    margin-top: 131px;
     border-top: 1px solid #E5E5E5;
     background-color: #f8f8f8;
     border-color: #e7e7e7;
 }
 .editable-wrap .editable-controls>input, .editable-wrap .editable-controls>select, .editable-wrap .editable-controls>textarea {
     width: 500px;
+}
+
+
+.name{
+    margin: 0 0 20px 0;
+    line-height: 1.5em;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.footer{
+    background-color: #2fa4e7;
+    color: #ffffff;
+    margin-top: 113px
+}
+h1{
+    text-align: center; color: #ffffff
+}
+.navbar-header{
+    padding-top: 2px
+}
+.edit-mode{
+    padding-top: 5px;
+}
+.title-am{
+    color: #ffffff;
+    width: 30px;
+    font-size: 20px;border-bottom: dashed 1px #1b0516;
+}
+.non-edit-mode{
+    padding-top: 5px
+}
+.logo-word{
+    color: #ffffff;
+    font-size: 20px
+}
+.col-md-6.table-col{
+    float: left; min-height: 100px;border: 5px white solid;background-color: rgba(86,61,124,.15);text-align: center;padding-top: 10px;
+}
+
+h4{
+    color: #ffffff
 }

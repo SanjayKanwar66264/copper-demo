@@ -1,16 +1,88 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-controller="MainCtrl">
+<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
+    <div class="container">
+        <div class="navbar-header">
+            <div ng-repeat="thing in awesomeThings">
+                <div ng-show="editing" class="edit-mode">
+                    <a href="#" editable-text="thing.title" e-name="title" ng-show="$index==0" class="title-am"
+                       onaftersave="updateName(thing)" style="color: #ffffff">{{thing.title| uppercase}}
+                    </a>
+                </div>
 
-<div class="container" style="padding-top: 100px">
-    <div class="well">
-       <h4 class="text-center" style="padding: 20px 0px;"><strong>Dedicated 24-hours Kurnia Auto Assist customer support line 1-800-88-3833</strong></h4>
+                <div ng-show="!editing" class="non-edit-mode">
+                    <a href="#" ng-show="$index==0" class="logo-word">{{thing.title| uppercase}}</a>
+                </div>
+            </div>
+        </div>
+        <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+                    <a ng-href="{{item.link}}">{{item.title}}</a>
+                </li>
+                <li>
+                    <a href="JavaScript:newPopup('online.html');">Online</a>
+                </li>
+            </ul>
 
-        <p class="text-center">(Foot Note information stating all products are underwritten by AmGeneral, agent name, address and contact information. Operational hours)</p>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
+                <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
+                <li ng-show="isLoggedIn()" class="navbar-text">Hello,<strong>{{ getCurrentUser().name }}</strong></li>
+                <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a>
+                </li>
+                <li>
+                    <button ng-click="editProduct()" class="btn btn-warning btn-sm pull-right" style="margin-top: 10px"
+                            ng-show="!editing && isLoggedIn()">
+                        <span class="fa fa-edit fa-2"></span> Edit
+                    </button>
+                    <button ng-click="doneEdit()" class="btn btn-success btn-sm pull-right" style="margin-top: 10px"
+                            ng-show="editing && isLoggedIn()">
+                        <span class="fa fa-check-circle fa-2"></span> Done
+                    </button>
+                </li>
+
+            </ul>
+        </div>
     </div>
 </div>
+<script type="text/javascript">
+    // Popup window code
+    function newPopup(url) {
+        popupWindow = window.open(
+                url, 'popUpWindow', 'height=900,width=1400,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+    }
+</script>
 
-<footer class="footer" style="background-color: #2fa4e7; color: #ffffff; margin-top: 205px">
+
+<div class="container-fluid" style="margin-top: 50px">
     <div class="container">
-        <h4 style="color: #ffffff">Dedicated 24-hours Kurnia Auto Assist customer support line 1-800-88-3833</h4>
-        <p>(Foot Note information stating all products are underwritten by AmGeneral, agent name, address and contact information. Operational hours)</p>
+        <div class="hero-unit">
+            <h1 style="text-align: center; color: #ffffff">Welcome to AM Insurance</h1>
+        </div>
+
+    </div>
+    <div class="hero-unit" style="margin:60px 460px;">
+        <h4 style="color: #ffffff"><p>Dedicated 24-hours Kurnia Auto Assist customer support line</p>
+            <div  ng-repeat="thing in awesomeThings">
+                <div ng-show="editing">
+                    <a href="#" editable-text="thing.contact" e-name="contact" ng-show="$index==0"
+                       onaftersave="updateName(thing)" style="color: #ffffff">{{thing.contact}}</a>
+            </div>
+                <div ng-show="!editing">
+                    <a href="#" ng-show="$index==0" style="color: #ffffff">{{thing.contact}}</a>
+                </div>
+            </div>
+        </h4>
+    </div>
+</div>
+</div>
+
+
+<footer class="footer" style="background-color: #2fa4e7; color: #ffffff; margin-top:115px">
+    <div class="container">
+        <h4 style="color: #ffffff">SK Pty Ltd</h4>
+        <p>(Foot Note information stating all products are underwritten by SanjayInsurance, agent name, address and contact
+            information. Operational hours)</p>
     </div>
 </footer>
